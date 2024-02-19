@@ -1,0 +1,36 @@
+
+const initialState = {
+    products: [
+      { id: 1, name: 'iPhone 13', price: 999 },
+      { id: 2, name: 'Samsung Galaxy S21', price: 899 },
+      { id: 3, name: 'Google Pixel 6', price: 799 },
+      { id: 4, name: 'OnePlus 9 Pro', price: 899 },
+      { id: 5, name: 'Xiaomi Mi 11', price: 699 },
+      { id: 6, name: 'Sony Xperia 1 III', price: 1299 },
+      { id: 7, name: 'Huawei P40 Pro', price: 899 },
+      { id: 8, name: 'LG Velvet', price: 599 },
+      { id: 9, name: 'Motorola Edge', price: 699 },
+      { id: 10, name: 'Nokia 8.3', price: 699 }
+    ],
+    cart: []
+  };
+  
+  const cartReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case 'ADD_TO_CART':
+        return {
+          ...state,
+          cart: [...state.cart, action.payload]
+        };
+      case 'REMOVE_FROM_CART':
+        return {
+          ...state,
+          cart: state.cart.filter(item => item.id !== action.payload)
+        };
+      default:
+        return state;
+    }
+  };
+  
+  export default cartReducer;
+  
